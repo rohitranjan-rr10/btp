@@ -1,10 +1,10 @@
 <?php
   session_start();
-  $servername = "hms.test"; //change this  accordingly
+  $servername = "127.0.0.1:3307";
   $dBUsername = "root";
-  $dBPassword = "root";
-  $dBName = "hostel_management_system";
- // session_start();
+  $dBPassword = "";
+  $dBName = "sms";
+
   $conn=mysqli_connect($servername, $dBUsername, $dBPassword, $dBName);
 
   if (!$conn) {

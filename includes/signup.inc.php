@@ -1,7 +1,5 @@
 <?php
-
 if (isset($_POST['signup-submit'])) {
-
   require 'config.inc.php';
 
   $roll = $_POST['student_roll_no'];
@@ -13,57 +11,49 @@ if (isset($_POST['signup-submit'])) {
   $password = $_POST['pwd'];
   $cnfpassword = $_POST['confirmpwd'];
 
-
-  if(!preg_match("/^[a-zA-Z0-9]*$/",$roll)){
+  if (!preg_match("/^[a-zA-Z0-9]*$/", $roll)) {
     header("Location: ../signup.php?error=invalidroll");
     exit();
-  }
-  else if($password !== $cnfpassword){
+  } else if ($password !== $cnfpassword) {
     header("Location: ../signup.php?error=passwordcheck");
     exit();
-  }
-  else {
-
+  } else {
     $sql = "SELECT Student_id FROM Student WHERE Student_id=?";
     $stmt = mysqli_stmt_init($conn);
-    if(!mysqli_stmt_prepare($stmt, $sql)){
+
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
       header("Location: ../signup.php?error=sqlerror");
       exit();
-    }
-    else {
+    } else {
       mysqli_stmt_bind_param($stmt, "s", $roll);
       mysqli_stmt_execute($stmt);
       mysqli_stmt_store_result($stmt);
       $resultCheck = mysqli_stmt_num_rows($stmt);
+
       if ($resultCheck > 0) {
         header("Location: ../signup.php?error=userexists");
         exit();
-      }
-      else {
+      } else {
         $sql = "INSERT INTO Student (Student_id, Fname, Lname, Mob_no, Dept, Year_of_study, Pwd) VALUES (?, ?, ?, ?, ?, ?, ?)";
         $stmt = mysqli_stmt_init($conn);
-        if(!mysqli_stmt_prepare($stmt, $sql)){
+
+        if (!mysqli_stmt_prepare($stmt, $sql)) {
           header("Location: ../signup.php?error=sqlerror");
           exit();
-        }
-        else {
-
+        } else {
           $hashedPwd = password_hash($password, PASSWORD_DEFAULT);
-
-          mysqli_stmt_bind_param($stmt, "sssssss",$roll, $fname, $lname, $mobile, $dept, $year, $hashedPwd);
+          mysqli_stmt_bind_param($stmt, "sssssss", $roll, $fname, $lname, $mobile, $dept, $year, $hashedPwd);
           mysqli_stmt_execute($stmt);
           header("Location: ../index.php?signup=success");
           exit();
         }
       }
     }
-
   }
+
   mysqli_stmt_close($stmt);
   mysqli_close($conn);
-
-}
-else {
+} else {
   header("Location: ../signup.php");
   exit();
 }

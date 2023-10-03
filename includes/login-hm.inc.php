@@ -1,7 +1,5 @@
 <?php
-
 if (isset($_POST['login-submit'])) {
-
   require 'config.inc.php';
 
   $username = $_POST['username'];
@@ -10,19 +8,17 @@ if (isset($_POST['login-submit'])) {
   if (empty($username) || empty($password)) {
     header("Location: ../login-hostel_manager.php?error=emptyfields");
     exit();
-  }
-  else {
+  } else {
     $sql = "SELECT *FROM Hostel_Manager WHERE Username = '$username'";
     $result = mysqli_query($conn, $sql);
-    if($row = mysqli_fetch_assoc($result)){
+
+    if ($row = mysqli_fetch_assoc($result)) {
       $pwdCheck = password_verify($password, $row['Pwd']);
-      if($pwdCheck == false){
+
+      if ($pwdCheck == false) {
         header("Location: ../login-hostel_manager.php?error=wrongpwd");
         exit();
-      }
-      else if($pwdCheck == true) {
-
-        //session_start();
+      } else if ($pwdCheck == true) {
         $_SESSION['hostel_man_id'] = $row['Hostel_man_id'];
         $_SESSION['fname'] = $row['Fname'];
         $_SESSION['lname'] = $row['Lname'];
@@ -33,35 +29,27 @@ if (isset($_POST['login-submit'])) {
         $_SESSION['isadmin'] = $row['Isadmin'];
         $_SESSION['PSWD'] = $row['Pwd'];
 
-        //Just for checking if session variables are working properly
-        if(isset($_SESSION['username'])){
+        if (isset($_SESSION['username'])) {
           echo "<script type='text/javascript'>alert('Set')</script>";
-        }
-        else {
+        } else {
           echo "<script type='text/javascript'>alert('Not SET')</script>";
         }
-        //echo $_SESSION['lname'];
-        if($_SESSION['isadmin']==0){
+
+        if ($_SESSION['isadmin'] == 0) {
           header("Location: ../home_manager.php?login=success");
-        }
-        else {
+        } else {
           header("Location: ../admin/admin_home.php?login=success");
         }
-        //exit();
-      }
-      else {
+      } else {
         header("Location: ../login-hostel_manager.php?error=strangeerr");
         exit();
       }
-    }
-    else{
+    } else {
       header("Location: ../login-hostel_manager.php?error=nouser");
       exit();
     }
   }
-
-}
-else {
+} else {
   header("Location: ../login-hostel_manager.php");
   exit();
 }
