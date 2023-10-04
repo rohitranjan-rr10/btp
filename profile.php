@@ -188,7 +188,7 @@ require 'includes/config.inc.php';
 								<div class="py-3"></div>
 							</fieldset>
 							<fieldset class="step agileinfo w3ls_fancy_step">
-								<legend>Hostel Manager Info</legend>
+								<legend>Warden Info</legend>
 								<div class="abt-agile">
 									<div class="abt-agile-left">
 									</div>

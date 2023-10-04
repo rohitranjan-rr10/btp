@@ -14,10 +14,10 @@
 <body>
     <h1>Student Management System</h1>
     <div class="w3l-login-form">
-        <h2>Admin Login</h2>
+        <h2>Admin/Warden Login</h2>
         <form action="includes/login-hm.inc.php" method="POST">
             <div class="w3l-form-group">
-                <label>Admin Username:</label>
+                <label>Username:</label>
                 <div class="group">
                     <input type="text" class="form-control" name="username" placeholder="Enter your username" required="required" />
                 </div>

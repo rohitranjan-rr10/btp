@@ -5,6 +5,7 @@ CREATE TABLE `Hostel_Manager` (
   `Username` varchar(255) NOT NULL,
   `Fname` varchar(255) NOT NULL,
   `Lname` varchar(255) NOT NULL,
+  `Email` varchar(255) NOT NULL,
   `Mob_no` varchar(255) NOT NULL,
   `Hostel_id` int(10) NOT NULL,
   `Pwd` LONGTEXT NOT NULL,
