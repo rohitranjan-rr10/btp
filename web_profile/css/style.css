@@ -85,6 +85,7 @@ video {
   font: inherit;
   vertical-align: baseline;
 }
+
 article,
 aside,
 details,
@@ -98,16 +99,19 @@ nav,
 section {
   display: block;
 }
+
 ol,
 ul {
   list-style: none;
   margin: 0px;
   padding: 0px;
 }
+
 blockquote,
 q {
   quotes: none;
 }
+
 blockquote:before,
 blockquote:after,
 q:before,
@@ -115,6 +119,7 @@ q:after {
   content: "";
   content: none;
 }
+
 table {
   border-collapse: collapse;
   border-spacing: 0;
@@ -123,46 +128,59 @@ table {
 a {
   text-decoration: none;
 }
+
 .txt-rt {
   text-align: right;
 }
+
 .txt-lt {
   text-align: left;
-} /* text align left */
+}
+
 .txt-center {
   text-align: center;
-} /* text align center */
+}
+
 .float-rt {
   float: right;
-} /* float right */
+}
+
 .float-lt {
   float: left;
-} /* float left */
+}
+
 .clear {
   clear: both;
-} /* clear float */
+}
+
 .pos-relative {
   position: relative;
-} /* Position Relative */
+}
+
 .pos-absolute {
   position: absolute;
-} /* Position Absolute */
+}
+
 .vertical-base {
   vertical-align: baseline;
-} /* vertical align baseline */
+}
+
 .vertical-top {
   vertical-align: top;
-} /* vertical align top */
+}
+
 nav.vertical ul li {
   display: block;
-} /* vertical menu */
+}
+
 nav.horizontal ul li {
   display: inline-block;
-} /* horizontal menu */
+}
+
 img {
   max-width: 100%;
 }
-/*end reset*/
+
 html,
 body {
   font-size: 100%;
@@ -173,6 +191,7 @@ body {
   background-size: cover;
   font-family: "Open Sans", sans-serif;
 }
+
 h1,
 h2,
 h3,
@@ -182,19 +201,22 @@ h6 {
   font-family: "Pathway Gothic One", sans-serif;
   margin: 0;
 }
+
 ul,
 label {
   margin: 0;
   padding: 0;
 }
+
 body a:hover,
 body a {
   text-decoration: none;
 }
-/*-- main --*/
+
 .agileits_copyright {
   text-align: center;
 }
+
 .agileits_copyright p {
   font-size: 14px;
   color: #fff;
@@ -203,13 +225,16 @@ body a {
   padding: 0 1em;
   text-transform: capitalize;
 }
+
 .agileits_copyright p a {
   color: #fff;
   text-decoration: underline;
 }
+
 .agileits_copyright p a:hover {
   color: #00e8ff;
 }
+
 input[type="submit"],
 .agileits_copyright p a,
 input[type="reset"] {
@@ -219,6 +244,7 @@ input[type="reset"] {
   -o-transition: 0.5s ease-in;
   -ms-transition: 0.5s ease-in;
 }
+
 .main {
   margin: 3em auto;
   text-align: center;
@@ -226,6 +252,7 @@ input[type="reset"] {
   position: relative;
   height: 100%;
 }
+
 .main h1 {
   text-align: center;
   color: #fff;
@@ -235,34 +262,39 @@ input[type="reset"] {
   text-transform: uppercase;
   font-family: "Pathway Gothic One", sans-serif;
 }
+
 #wrapper {
   width: 670px;
   overflow: hidden;
 }
+
 #steps {
   width: 670px;
-  /*height:320px;*/
   overflow: hidden;
   background: #262626;
 }
+
 .step {
   float: left;
   width: 670px;
-  /*height:320px;*/
 }
+
 #navigation {
   height: 45px;
   margin-bottom: 20px;
   display: inline-block;
 }
+
 #navigation ul {
   list-style: none;
 }
+
 #navigation ul li {
   float: left;
   position: relative;
   margin: 0px 2px;
 }
+
 #navigation ul li a {
   display: block;
   height: 45px;
@@ -277,9 +309,11 @@ input[type="reset"] {
   border: none;
   background: none;
 }
+
 #navigation ul li a {
   position: relative;
 }
+
 #navigation ul li a:before {
   content: "";
   border-left: 10px solid transparent;
@@ -290,10 +324,12 @@ input[type="reset"] {
   left: 40%;
   opacity: 0;
 }
+
 #navigation ul li a:hover:before,
 #navigation ul li a:hover span {
   opacity: 1;
 }
+
 #navigation ul li a span {
   position: absolute;
   top: -101%;
@@ -306,14 +342,17 @@ input[type="reset"] {
   font-size: 14px;
   opacity: 0;
 }
+
 #navigation ul li a:hover,
 #navigation ul li.selected a {
   color: #fff;
 }
+
 #steps form fieldset {
   border: none;
   padding-bottom: 0px;
 }
+
 #steps form legend {
   text-align: center;
   color: #3b82f6;
@@ -324,35 +363,43 @@ input[type="reset"] {
   padding: 20px 0px 20px 0px;
   margin: 0;
 }
+
 .abt-agile-right h3 {
   font-size: 28px;
   color: #fff;
   letter-spacing: 2px;
 }
+
 .abt-agile-right p {
   font-size: 14px;
   line-height: 28px;
   color: #b2b2b2;
   margin: 20px 0;
 }
+
 .abt-agile-right {
   float: right;
   width: 58%;
   text-align: left;
 }
+
 .abt-agile {
   padding: 20px;
 }
+
 p.agileinfo_para {
   margin-top: 40px !important;
 }
+
 p.step_w3layouts {
   background: #d9d9d9 !important;
   color: #212121;
 }
+
 .w3_agile ul li i {
   font-size: 30px;
 }
+
 .abt-agile-left {
   background: url(../images/c.jpg) no-repeat center 0;
   background-size: cover;
@@ -368,14 +415,17 @@ p.step_w3layouts {
   width: 37%;
   float: left;
 }
+
 .work-w3agile-top ul li {
   float: left;
   width: 31.33%;
   margin: 1%;
 }
+
 .work-w3agile {
   padding: 20px;
 }
+
 .agilecontactw3ls-grid input[type="text"],
 .agilecontactw3ls-grid input[id="HOSTEL_NAME"],
 .agilecontactw3ls-grid input[list="HOSTEL_NAME"],
@@ -393,6 +443,7 @@ p.step_w3layouts {
   margin-bottom: 20px;
   font-size: 13px;
 }
+
 .myclass {
   width: 93%;
   padding: 10px;
@@ -404,21 +455,26 @@ p.step_w3layouts {
   margin-bottom: 20px;
   font-size: 13px;
 }
+
 .agilecontactw3ls-grid input[type="email"] {
   margin-bottom: 20px;
 }
+
 .agilecontactw3ls-grid textarea {
   height: 100px;
   margin: 20px 0;
   font-family: "Open Sans", sans-serif;
 }
+
 .agilecontactw3ls-grid {
   padding: 20px;
 }
+
 .agilecontactw3ls-grid .send-button {
   margin-top: 0;
   text-align: center;
 }
+
 .agilecontactw3ls-grid input[type="submit"] {
   padding: 10px 80px;
   background-color: #00e8ff;
@@ -428,36 +484,44 @@ p.step_w3layouts {
   outline: none;
   cursor: pointer;
 }
+
 .agilecontactw3ls-grid input[type="submit"]:hover {
   color: #ffffff;
   background-color: #212121;
 }
+
 .agile-con-left {
   float: left;
   width: 50%;
 }
+
 .agile-con-right {
   float: right;
   width: 45%;
   text-align: left;
 }
+
 .agile-con-right p {
   font-size: 14px;
   color: #fff;
   line-height: 28px;
   margin: 8px 0;
 }
+
 .agile-con-right p a {
   color: #fff;
   text-decoration: none;
 }
+
 .agile-con-right p a:hover {
   color: #00e8ff;
 }
+
 .agile-con-right span i {
   color: #00e8ff;
   padding-right: 10px;
 }
+
 .agile-con-right h6 {
   font-size: 24px;
   color: #fff;
@@ -467,17 +531,21 @@ p.step_w3layouts {
   padding-bottom: 20px;
   border-bottom: 1px solid #afafaf;
 }
+
 ul.address {
   margin-top: 1.5em;
   border-top: 3px solid #ef4444;
   padding-top: 0.5em;
 }
+
 ul.address li {
   display: block;
 }
+
 ul.address li ul.address-text li:nth-child(1) {
   width: 20%;
 }
+
 ul.address li ul.address-text li {
   display: inline-block;
   font-size: 0.95em;
@@ -485,26 +553,31 @@ ul.address li ul.address-text li {
   margin-top: 0.9em;
   font-weight: 500;
 }
+
 .address-text li a {
   color: #fff;
 }
+
 .abt-agile-right h5 {
   font-size: 20px;
   letter-spacing: 1px;
   margin-top: 10px;
   color: #ffc107;
 }
-/*-- work --*/
+
 .w3ls_work_grids {
   margin-top: 4em;
 }
+
 .column .w3_agile_work_effect {
   position: relative;
 }
+
 .hover14 figure {
   overflow: hidden;
   position: relative;
 }
+
 .hover14 figure::before {
   position: absolute;
   top: 0;
@@ -527,39 +600,40 @@ ul.address li ul.address-text li {
   -webkit-transform: skewX(-17deg);
   transform: skewX(-17deg);
 }
+
 .hover14 figure:hover::before {
   -webkit-animation: shine 0.95s;
   animation: shine 0.95s;
 }
+
 @-webkit-keyframes shine {
   100% {
     left: 125%;
   }
 }
+
 @keyframes shine {
   100% {
     left: 125%;
   }
 }
-/*-- //work --*/
+
 ::-webkit-input-placeholder {
   color: #afafaf;
 }
 
 :-moz-placeholder {
-  /* Firefox 18- */
   color: #afafaf;
 }
 
 ::-moz-placeholder {
-  /* Firefox 19+ */
   color: #afafaf;
 }
 
 :-ms-input-placeholder {
   color: #afafaf;
 }
-/*-- start-responsive-design --*/
+
 @media (max-width: 736px) {
   .main h1 {
     margin-bottom: 1.5em;
@@ -568,8 +642,8 @@ ul.address li ul.address-text li {
     margin: 3em 0 0;
   }
 }
+
 @media (max-width: 667px) {
-  /*-- w3layouts --*/
   #wrapper,
   .step,
   .main {
@@ -606,12 +680,14 @@ ul.address li ul.address-text li {
     width: 60%;
   }
 }
+
 @media (max-width: 640px) {
   .abt-agile-left {
     min-height: 240px;
     width: 36%;
   }
 }
+
 @media (max-width: 600px) {
   .main h1 {
     font-size: 2.1em;
@@ -621,6 +697,7 @@ ul.address li ul.address-text li {
     width: 210px !important;
   }
 }
+
 @media (max-width: 568px) {
   .main h1 {
     font-size: 2em;
@@ -633,8 +710,8 @@ ul.address li ul.address-text li {
     margin: 2em auto;
   }
 }
+
 @media (max-width: 480px) {
-  /*-- agileits --*/
   #wrapper,
   .step,
   .main {
@@ -694,6 +771,7 @@ ul.address li ul.address-text li {
     height: 74px;
   }
 }
+
 @media (max-width: 414px) {
   .main h1 {
     font-size: 1.8em;
@@ -743,6 +821,7 @@ ul.address li ul.address-text li {
     width: 92%;
   }
 }
+
 @media (max-width: 384px) {
   #wrapper,
   .step,
@@ -788,6 +867,7 @@ ul.address li ul.address-text li {
     width: 23%;
   }
 }
+
 @media (max-width: 320px) {
   #wrapper,
   .step,
