@@ -58,6 +58,9 @@ require 'includes/config.inc.php';
 								<a class="nav-link" href="services.php">Hostels</a>
 							</li>
 							<li class="nav-item">
+								<a class="nav-link" href="fees.php">Fee Payment</a>
+							</li>
+							<li class="nav-item">
 								<a class="nav-link" href="contact.php">Contact</a>
 							</li>
 							<li class="nav-item active">
