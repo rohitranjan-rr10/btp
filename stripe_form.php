@@ -24,6 +24,15 @@ $price = $row_getPr['price'];
     <link rel="stylesheet" href="css/design.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <style>
+        *::-webkit-scrollbar {
+            display: none;
+        }
+
+        * {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
         body {
             background-color: #f5f5f5;
             font-family: Arial, sans-serif;
@@ -35,19 +44,17 @@ $price = $row_getPr['price'];
 
         .credit-card-box {
             border: 1px solid #e1e1e1;
-            border-radius: 5px;
-            box-shadow: 3px 3px 5px #888888;
-            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            background-color: #ffffff;
+            padding: 40px;
         }
 
-        .credit-card-box .panel-title {
+        .credit-card-box .card-title {
             text-align: center;
             color: #333;
             font-weight: bold;
-        }
-
-        .credit-card-box .panel-body {
-            padding: 30px;
+            font-size: 24px;
         }
 
         .form-group label {
@@ -55,7 +62,7 @@ $price = $row_getPr['price'];
         }
 
         .form-group input {
-            padding: 10px;
+            padding: 15px;
             border: 1px solid #ccc;
             border-radius: 5px;
             width: 100%;
@@ -64,16 +71,56 @@ $price = $row_getPr['price'];
         #payBtn {
             background-color: #4CAF50;
             color: white;
-            padding: 10px;
+            padding: 15px;
             border: none;
             border-radius: 5px;
             width: 100%;
             cursor: pointer;
+            font-size: 18px;
         }
 
         .payment-status {
             text-align: center;
-            margin-top: 10px;
+            margin-top: 20px;
+            font-size: 18px;
+            color: red;
+        }
+
+        .test-card-details {
+            background-color: #f2f2f2;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            font-size: 18px;
+        }
+
+        .test-card-details h2 {
+            font-weight: bold;
+        }
+
+        .test-card-details ul {
+            padding: 0;
+        }
+
+        .test-card-details li {
+            list-style: none;
+            margin-bottom: 10px;
+        }
+
+        .test-card-details table {
+            width: 100%;
+            font-size: 16px;
+        }
+
+        .test-card-details th,
+        .test-card-details td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        .test-card-details th {
+            font-weight: bold;
         }
     </style>
 </head>
@@ -175,6 +222,8 @@ $price = $row_getPr['price'];
                     </form>
                 </div>
             </div>
+            <br>
+            <br>
         </div>
     </div>
 </body>
