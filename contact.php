@@ -167,7 +167,8 @@ if (isset($_POST['submit'])) {
 	$hos_man_user = $row6['Hostel_man_id'];
 	$roll = $_SESSION['roll'];
 	$today_date =  date("Y-m-d");
-	$time = date("h:i A");
+	$time = date("h:i A", strtotime("+3 hours 30 minutes"));
+
 	$query = "INSERT INTO Message (sender_id,receiver_id,hostel_id,subject_h,message,msg_date,msg_time) VALUES ('$roll','$hos_man_user','$hostel_id','$subject','$message','$today_date','$time')";
 	$result = mysqli_query($conn, $query);
 
