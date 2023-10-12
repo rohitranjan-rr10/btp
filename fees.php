@@ -89,14 +89,34 @@ include "dbcon.php";
                     $sql = "SELECT * FROM `products`";
                     $res = mysqli_query($con, $sql) or die("MySql Query Error" . mysqli_error($con));
                     while ($row = mysqli_fetch_assoc($res)) {
+                        $productName = $row['name'];
+                        $productPrice = $row['price'];
+                        $productId = $row['id'];
+
+                        // Check if the corresponding fee is paid for the current student
+                        $feeType = strtolower(str_replace(' ', '_', $productName));
+                        $studentRoll = $_SESSION['roll'];
+
+                        $checkPaymentQuery = "SELECT $feeType FROM student WHERE student_id = '$studentRoll'";
+                        $checkPaymentResult = mysqli_query($con, $checkPaymentQuery) or die("MySql Query Error" . mysqli_error($con));
+                        $paymentRow = mysqli_fetch_assoc($checkPaymentResult);
+                        $feePaid = $paymentRow[$feeType];
+
+                        // Disable the button if the fee is paid
+                        $buttonDisabled = $feePaid == 1 ? 'disabled' : '';
+                        $buttonText = $feePaid == 1 ? 'Payment Done' : 'Pay Now';
+                        $buttonColor = $feePaid == 1 ? 'btn-success' : 'btn-primary';
+
                     ?>
                         <tr>
-                            <td><?php echo $row['name']; ?></td>
-                            <td>₹<?php echo $row['price']; ?></td>
+                            <td><?php echo $productName; ?></td>
+                            <td>₹<?php echo $productPrice; ?></td>
                             <td>
                                 <form method="post" action="stripe_form.php">
-                                    <input type="hidden" name="id" value="<?php echo $row['id']; ?>" />
-                                    <button type="submit" class="btn btn-primary btn-sm" name="submit" role="button">Pay Now</button>
+                                    <input type="hidden" name="id" value="<?php echo $productId; ?>" />
+                                    <button type="submit" class="btn btn-sm <?php echo $buttonColor; ?>" name="submit" <?php echo $buttonDisabled; ?>>
+                                        <?php echo $buttonText; ?>
+                                    </button>
                                 </form>
                             </td>
                         </tr>

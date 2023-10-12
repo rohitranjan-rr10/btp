@@ -119,18 +119,18 @@ $price = $row_getPr['price'];
                                     <label for="card_exp_month">MONTH</label>
                                     <select name="card_exp_month" id="card_exp_month" class="form-control" data-stripe="exp_month" required>
                                         <option>Month</option>
-                                        <option value="01">01 ( JAN )</option>
-                                        <option value="02">02 ( FEB )</option>
-                                        <option value="03">03 ( MAR )</option>
-                                        <option value="04">04 ( APR )</option>
-                                        <option value="05">05 ( MAY )</option>
-                                        <option value="06">06 ( JUN )</option>
-                                        <option value="07">07 ( JUL )</option>
-                                        <option value="08">08 ( AUG )</option>
-                                        <option value="09">09 ( SEP )</option>
-                                        <option value="10">10 ( OCT )</option>
-                                        <option value="11">11 ( NOV )</option>
-                                        <option value="12">12 ( DEC )</option>
+                                        <option value="01">01</option>
+                                        <option value="02">02</option>
+                                        <option value="03">03</option>
+                                        <option value="04">04</option>
+                                        <option value="05">05</option>
+                                        <option value="06">06</option>
+                                        <option value="07">07</option>
+                                        <option value="08">08</option>
+                                        <option value="09">09</option>
+                                        <option value="10">10</option>
+                                        <option value="11">11</option>
+                                        <option value="12">12</option>
                                     </select>
                                 </div>
                             </div>
@@ -139,9 +139,6 @@ $price = $row_getPr['price'];
                                     <label for="card_exp_year">YEAR</label>
                                     <select name="card_exp_year" id="card_exp_year" class="form-control" data-stripe="exp_year" required>
                                         <option>Year</option>
-                                        <option value="20">2020</option>
-                                        <option value="21">2021</option>
-                                        <option value="22">2022</option>
                                         <option value="23">2023</option>
                                         <option value="24">2024</option>
                                         <option value="25">2025</option>
@@ -155,6 +152,14 @@ $price = $row_getPr['price'];
                                         <option value="33">2033</option>
                                         <option value="34">2034</option>
                                         <option value="35">2035</option>
+                                        <option value="36">2036</option>
+                                        <option value="37">2037</option>
+                                        <option value="38">2038</option>
+                                        <option value="39">2039</option>
+                                        <option value="40">2040</option>
+                                        <option value="41">2041</option>
+                                        <option value="42">2042</option>
+                                        <option value="43">2043</option>
                                     </select>
                                 </div>
                             </div>

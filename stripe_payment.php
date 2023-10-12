@@ -24,6 +24,12 @@ if (!empty($_POST['stripeToken'])) {
 	$price = $row_getPr['price'];
 	$pr_desc = $row_getPr['name'];
 
+	$productCode = $row_getPr['code'];
+	$SQL_getItemNumber = "SELECT `id` FROM `products` WHERE `code`='$productCode'";
+	$res_getItemNumber = mysqli_query($con, $SQL_getItemNumber) or die("MySql Query Error" . mysqli_error($con));
+	$row_getItemNumber = mysqli_fetch_assoc($res_getItemNumber);
+	$itemNumber = $row_getItemNumber['id'];
+
 	require_once('stripe-php/init.php');
 
 	$stripe = array(
@@ -42,8 +48,8 @@ if (!empty($_POST['stripeToken'])) {
 
 	$orderID = strtoupper(str_replace('.', '', uniqid('', true)));
 
-	$itemPrice = ($price*100);
-	$currency = "inr";
+	$itemPrice = ($price * 100);
+	$currency = "INR";
 	$itemName = $row_getPr['name'];
 
 	$charge = \Stripe\Charge::create(array(
@@ -67,8 +73,26 @@ if (!empty($_POST['stripeToken'])) {
 		$payment_date = date("Y-m-d H:i:s");
 		$dt_tm = date('Y-m-d H:i:s');
 
-		$sql = "INSERT INTO `orders`(`name`,`email`,`card_number`,`card_exp_month`,`card_exp_year`,`item_name`,`item_number`,`item_price`,`item_price_currency`,`paid_amount`,`paid_amount_currency`,`txn_id`,`payment_status`,`created`,`modified`,`roll`) VALUES ('$name','$email','$card_no','$card_exp_month','$card_exp_year','$itemName','','$itemPrice','$currency','$paidAmount','$paidCurrency','$transactionID','$payment_status','$dt_tm','$dt_tm', '$roll')";
+		$sql = "INSERT INTO `orders`(`name`,`email`,`card_number`,`card_exp_month`,`card_exp_year`,`item_name`,`item_number`,`item_price`,`item_price_currency`,`paid_amount`,`paid_amount_currency`,`txn_id`,`payment_status`,`created`,`modified`,`roll`) VALUES ('$name','$email','$card_no','$card_exp_month','$card_exp_year','$itemName','$itemNumber','$itemPrice','$currency','$paidAmount','$paidCurrency','$transactionID','$payment_status','$dt_tm','$dt_tm', '$roll')";
 		mysqli_query($con, $sql) or die("Mysql Error Stripe-Charge(SQL)" . mysqli_error($con));
+
+		if ($itemNumber == 1) {
+			$studentId = $roll;
+			$updateStudentQuery = "UPDATE student SET acad_fees = 1 WHERE Student_id = '$studentId'";
+			mysqli_query($con, $updateStudentQuery) or die("Mysql Error Update Student Table" . mysqli_error($con));
+		}
+
+		if ($itemNumber == 2) {
+			$studentId = $roll;
+			$updateStudentQuery = "UPDATE student SET hostel_fees = 1 WHERE Student_id = '$studentId'";
+			mysqli_query($con, $updateStudentQuery) or die("Mysql Error Update Student Table" . mysqli_error($con));
+		}
+
+		if ($itemNumber == 3) {
+			$studentId = $roll;
+			$updateStudentQuery = "UPDATE student SET mess_fees = 1 WHERE Student_id = '$studentId'";
+			mysqli_query($con, $updateStudentQuery) or die("Mysql Error Update Student Table" . mysqli_error($con));
+		}
 
 		$sql_g = "SELECT * FROM `orders`";
 		$res_g = mysqli_query($con, $sql_g) or die("Mysql Error Stripe-Charge(SQL2)" . mysqli_error($con));
@@ -193,7 +217,7 @@ if (!empty($_POST['stripeToken'])) {
 				</tr>
 				<tr>
 					<th>Paid Amount</th>
-					<td><?php echo $paidAmount/100 . ' ' . $paidCurrency; ?> (₹<?php echo $price; ?>.00)</td>
+					<td>₹<?php echo $price; ?>.00</td>
 				</tr>
 				<tr>
 					<th>Payment Status</th>
@@ -209,7 +233,7 @@ if (!empty($_POST['stripeToken'])) {
 				</tr>
 				<tr>
 					<th>Price</th>
-					<td><?php echo $itemPrice/100 . ' ' . $currency; ?> (₹<?php echo $price; ?>.00)</td>
+					<td>₹<?php echo $price; ?>.00</td>
 				</tr>
 			</table>
 		</div>
