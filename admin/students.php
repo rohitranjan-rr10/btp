@@ -47,7 +47,7 @@ require '../includes/config.inc.php';
 								<a class="nav-link" href="students.php">Students</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="admin_contact.php">Contact</a>
+								<a class="nav-link" href="admin_fees.php">Fees status</a>
 							</li>
 							<li class="dropdown nav-item">
 								<a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown"><?php echo $_SESSION['username']; ?>
@@ -209,7 +209,7 @@ require '../includes/config.inc.php';
 							<a href="students.php">Students</a>
 						</li>
 						<li>
-							<a href="admin_contact.php">Contact</a>
+							<a href="admin_fees.php">Fees status</a>
 						</li>
 						<li>
 							<a href="admin_profile.php">Profile</a>

@@ -65,7 +65,7 @@ require '../includes/config.inc.php';
 									<a class="nav-link" href="students.php">Students</a>
 								</li>
 								<li class="nav-item">
-									<a class="nav-link" href="admin_contact.php">Contact</a>
+									<a class="nav-link" href="admin_fees.php">Contact</a>
 								</li>
 								<li class="dropdown nav-item">
 								<li>
