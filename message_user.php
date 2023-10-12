@@ -85,6 +85,8 @@ require 'includes/config.inc.php';
 			</div>
 		</header>
 	</div>
+	<br>
+	<br>
 	<?php
 	$roll_no = $_SESSION['roll'];
 	$query = "SELECT * FROM Message WHERE receiver_id ='$roll_no'";

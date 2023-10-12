@@ -148,7 +148,7 @@ $price = $row_getPr['price'];
                         </div>
                         <div class="form-group">
                             <label for="roll">ROLL NO</label>
-                            <input type="text" class="form-control" name="roll" placeholder="Roll" id="roll" value="<?php echo $_SESSION['roll']; ?>" required="" />
+                            <input type="text" class="form-control" name="roll" placeholder="Roll" id="roll" value="<?php echo $_SESSION['roll']; ?>" required=""/>
                         </div>
                         <div class="form-group">
                             <label for="email">EMAIL</label>

@@ -100,12 +100,12 @@ require 'includes/config.inc.php';
 		</header>
 	</div>
 
-	<div class="py-5"></div>
+	<div class="py-3"></div>
 
 	<?php
 	$username = $_SESSION['username'];
 	$hostel_man_id = $_SESSION['hostel_man_id'];
-	$query = "SELECT * FROM Message WHERE receiver_id ='$hostel_man_id'";
+	$query = "SELECT * FROM Message WHERE receiver_id ='$hostel_man_id' ORDER BY msg_date DESC, msg_time DESC";
 	$result = mysqli_query($conn, $query);
 
 	while ($row = mysqli_fetch_assoc($result)) {
