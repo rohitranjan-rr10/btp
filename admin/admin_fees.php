@@ -42,13 +42,59 @@ require '../includes/config.inc.php';
 		}
 
 		.paid {
-			color: green;
+			color: #22c55e;
 		}
 
 		.not-paid {
-			color: red;
+			color: #ef4444;
+		}
+
+		button {
+			background-color: #007BFF;
+			color: #fff;
+			padding: 10px 20px;
+			border: none;
+			border-radius: 5px;
+			font-size: 16px;
+			cursor: pointer;
+			transition: background-color 0.3s;
+		}
+
+		button:hover {
+			background-color: #0056b3;
+		}
+
+		.generate-button {
+			margin-bottom: 30px;
 		}
 	</style>
+	<script>
+		function generatePDF() {
+			var xhr = new XMLHttpRequest();
+			xhr.open('POST', '../generate_pdf.php', true);
+			xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+			xhr.responseType = 'blob';
+
+			xhr.onreadystatechange = function() {
+				if (xhr.readyState === 4 && xhr.status === 200) {
+					var blob = new Blob([xhr.response], {
+						type: 'application/pdf'
+					});
+					var url = window.URL.createObjectURL(blob);
+					var a = document.createElement('a');
+					a.style.display = 'none';
+					a.href = url;
+					a.download = 'fees_report.pdf';
+					document.body.appendChild(a);
+					a.click();
+					window.URL.revokeObjectURL(url);
+				}
+			};
+
+			xhr.send();
+		}
+	</script>
+
 </head>
 
 <body>
@@ -97,6 +143,7 @@ require '../includes/config.inc.php';
 	<section class="contact py-5">
 		<div class="container">
 			<h2 class="heading text-capitalize mb-sm-5 mb-4">Fees status</h2>
+			<button onclick="generatePDF()" class="generate-button">Generate PDF Report</button>
 			<table class="table table-hover">
 				<thead>
 					<tr>
@@ -116,9 +163,9 @@ require '../includes/config.inc.php';
 						while ($row = mysqli_fetch_assoc($result)) {
 							$studentID = $row['Student_id'];
 							$name = $row['Name'];
-							$acadFees = $row['acad_fees'] == 1 ? '<span class="paid"><b>Paid</b></span>' : '<span class="not-paid"><b>Not Paid</b></span>';
-							$hostelFees = $row['hostel_fees'] == 1 ? '<span class="paid"><b>Paid</b></span>' : '<span class="not-paid"><b>Not Paid</b></span>';
-							$messFees = $row['mess_fees'] == 1 ? '<span class="paid"><b>Paid</b></span>' : '<span class="not-paid"><b>Not Paid</b></span>';
+							$acadFees = $row['acad_fees'] == 1 ? '<span class="status-button paid"><b>Paid</b></span>' : '<span class="status-button not-paid"><b>Not Paid</b></span>';
+							$hostelFees = $row['hostel_fees'] == 1 ? '<span class="status-button paid"><b>Paid</b></span>' : '<span class="status-button not-paid"><b>Not Paid</b></span>';
+							$messFees = $row['mess_fees'] == 1 ? '<span class="status-button paid"><b>Paid</b></span>' : '<span class="status-button not-paid"><b>Not Paid</b></span>';
 
 							echo "<tr>
                                 <td>$studentID</td>
