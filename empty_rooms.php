@@ -46,7 +46,7 @@ require 'includes/config.inc.php';
 							<li class="nav-item">
 								<a class="nav-link" href="message_hostel_manager.php">Messages Received</a>
 							</li>
-							<li class="dropdown nav-item">
+							<li class="dropdown nav-item active">
 							<a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">Rooms
 								<b class="caret"></b>
 							</a>

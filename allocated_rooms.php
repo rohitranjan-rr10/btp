@@ -46,7 +46,7 @@ require 'includes/config.inc.php';
 							<li class="nav-item">
 								<a class="nav-link" href="message_hostel_manager.php">Messages Received</a>
 							</li>
-							<li class="dropdown nav-item">
+							<li class="dropdown nav-item active">
 								<a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">Rooms
 									<b class="caret"></b>
 								</a>
@@ -148,10 +148,10 @@ require 'includes/config.inc.php';
 	?>
 
 	<div class="container">
-		<h2 class="heading text-capitalize mb-sm-5 mb-4"> Rooms Allotted </h2>
+		<h2 class="heading text-capitalize mb-sm-5 mb-4">Rooms Allotted</h2>
 		<?php
 		$hostel_id = $_SESSION['hostel_id'];
-		$query1 = "SELECT * FROM Student where Hostel_id = '$hostel_id'";
+		$query1 = "SELECT * FROM Student where Hostel_id = '$hostel_id' ORDER BY Room_id";
 		$result1 = mysqli_query($conn, $query1);
 		$query6 = "SELECT * FROM Hostel WHERE Hostel_id = '$hostel_id'";
 		$result6 = mysqli_query($conn, $query6);
