@@ -117,14 +117,16 @@ require '../includes/config.inc.php';
 							$query88 = "SELECT * FROM Hostel WHERE Hostel_id = '$studentHID'";
 							$result88 = mysqli_query($conn, $query88);
 							$row88 = mysqli_fetch_assoc($result88);
-							$room_no = $row7['Room_No'];
-							$hostel_name = $row88['Hostel_name'];
+							$room_no = isset($row7['Room_No']) ? $row7['Room_No'] : "NA";
+							$hostel_name = isset($row88['Hostel_name']) ? $row88['Hostel_name'] : "NA";
 							$student_name = $row_search['Fname'] . " " . $row_search['Lname'];
+
 							echo "<tr><td>{$student_name}</td><td>{$row_search['Student_id']}</td><td>{$row_search['Mob_no']}</td><td>{$hostel_name}</td><td>{$room_no}</td></tr>\n";
 						}
 					}
 					?>
 				</tbody>
+
 			</table>
 		</div>
 	<?php
