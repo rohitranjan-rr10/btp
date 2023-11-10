@@ -52,7 +52,7 @@ require 'includes/config.inc.php';
 									<a class="nav-link" href="contact.php">Contact</a>
 								</li>
 								<li class="nav-item">
-									<a class="nav-link" href="message_user.php">Message Received</a>
+									<a class="nav-link" href="message_user.php">Inbox</a>
 								</li>
 								<li class="dropdown nav-item">
 									<a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown"><?php echo $_SESSION['roll']; ?>
