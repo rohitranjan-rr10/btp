@@ -79,7 +79,7 @@ require 'includes/config.inc.php';
     $result1 = mysqli_query($conn, $query1);
     $row1 = mysqli_fetch_assoc($result1);
     $hostel_name = $row1['Hostel_name'];
-
+    $roll_number = $_SESSION['roll'];
     $roomId = $_SESSION['room_id'];
     if ($hostel_id == NULL || $roomId == NULL) {
         $roomNo = 'NA';
@@ -179,37 +179,45 @@ if (isset($_POST['submit'])) {
     $new_room = $_POST['new_room_no'];
     $old_room = $_POST['old_room_no'];
 
-    $queryCheckRoom = "SELECT Allocated FROM room WHERE Hostel_id = $hostel_id AND Room_No = $new_room";
-    $resultCheckRoom = mysqli_query($conn, $queryCheckRoom);
+    $queryCheckRequest = "SELECT * FROM room_change WHERE sender_id = '$roll_number' AND hostel_id = '$hostel_id' AND old_room = '$old_room' AND application_status = 0";
+    $resultCheckRequest = mysqli_query($conn, $queryCheckRequest);
 
-    if ($resultCheckRoom) {
-        $rowCheckRoom = mysqli_fetch_assoc($resultCheckRoom);
-        $allocated = $rowCheckRoom['Allocated'];
-
-        if ($allocated == 1) {
-            echo "<script type='text/javascript'>alert('Error: The requested room is already occupied. Please choose a vacant room.')</script>";
-        } else {
-            $query7 = "SELECT * FROM Hostel WHERE Hostel_name = '$hostel_name'";
-            $result7 = mysqli_query($conn, $query7);
-            $row7 = mysqli_fetch_assoc($result7);
-            $hostel_id = $row7['Hostel_id'];
-            $query6 = "SELECT * FROM Hostel_Manager WHERE Hostel_id = '$hostel_id'";
-            $result6 = mysqli_query($conn, $query6);
-            $row6 = mysqli_fetch_assoc($result6);
-            $hos_man_user = $row6['Hostel_man_id'];
-            $roll = $_SESSION['roll'];
-
-            $query = "INSERT INTO room_change (sender_id, receiver_id, hostel_id, old_room, new_room) VALUES ('$roll', '$hos_man_user', '$hostel_id', '$old_room', '$new_room')";
-            $result = mysqli_query($conn, $query);
-
-            if ($result) {
-                echo "<script type='text/javascript'>alert('Request Submitted')</script>";
-            } else {
-                echo "<script type='text/javascript'>alert('Error in submitting request')</script>";
-            }
-        }
+    if (mysqli_num_rows($resultCheckRequest) > 0) {
+        // Request with status 0 already exists, show an error message
+        echo "<script type='text/javascript'>alert('Error: The request is already in queue. Please wait for approval.')</script>";
     } else {
-        echo "<script type='text/javascript'>alert('Error in checking room occupancy')</script>";
+        $queryCheckRoom = "SELECT Allocated FROM room WHERE Hostel_id = $hostel_id AND Room_No = $new_room";
+        $resultCheckRoom = mysqli_query($conn, $queryCheckRoom);
+
+        if ($resultCheckRoom) {
+            $rowCheckRoom = mysqli_fetch_assoc($resultCheckRoom);
+            $allocated = $rowCheckRoom['Allocated'];
+
+            if ($allocated == 1) {
+                echo "<script type='text/javascript'>alert('Error: The requested room is already occupied. Please choose a vacant room.')</script>";
+            } else {
+                $query7 = "SELECT * FROM Hostel WHERE Hostel_name = '$hostel_name'";
+                $result7 = mysqli_query($conn, $query7);
+                $row7 = mysqli_fetch_assoc($result7);
+                $hostel_id = $row7['Hostel_id'];
+                $query6 = "SELECT * FROM Hostel_Manager WHERE Hostel_id = '$hostel_id'";
+                $result6 = mysqli_query($conn, $query6);
+                $row6 = mysqli_fetch_assoc($result6);
+                $hos_man_user = $row6['Hostel_man_id'];
+                $roll = $_SESSION['roll'];
+
+                $query = "INSERT INTO room_change (sender_id, receiver_id, hostel_id, old_room, new_room) VALUES ('$roll', '$hos_man_user', '$hostel_id', '$old_room', '$new_room')";
+                $result = mysqli_query($conn, $query);
+
+                if ($result) {
+                    echo "<script type='text/javascript'>alert('Request Submitted')</script>";
+                } else {
+                    echo "<script type='text/javascript'>alert('Error in submitting request')</script>";
+                }
+            }
+        } else {
+            echo "<script type='text/javascript'>alert('Error in checking room occupancy')</script>";
+        }
     }
 }
 ?>

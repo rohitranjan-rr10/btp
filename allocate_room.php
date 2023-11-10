@@ -51,13 +51,16 @@ require 'includes/config.inc.php';
 										<a href="allocated_rooms.php">Allocated Rooms</a>
 									</li>
 									<li>
-										<a href="message_hostel_manager.php">Messages Received</a>
+										<a href="message_hostel_manager.php">Inbox</a>
 									</li>
 									<li>
 										<a href="empty_rooms.php">Empty Rooms</a>
 									</li>
 									<li>
 										<a href="vacate_rooms.php">Vacate Rooms</a>
+									</li>
+									<li>
+										<a href="warden_room_change.php">Room Change Request</a>
 									</li>
 								</ul>
 							</li>

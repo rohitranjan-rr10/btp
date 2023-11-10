@@ -59,7 +59,7 @@ require 'includes/config.inc.php';
 								<a class="nav-link" href="allocate_room.php">Allocate Room</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link active" href="message_hostel_manager.php">Messages Received</a>
+								<a class="nav-link active" href="message_hostel_manager.php">Inbox</a>
 							</li>
 							<li class="dropdown nav-item">
 								<a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">Rooms
@@ -74,6 +74,9 @@ require 'includes/config.inc.php';
 									</li>
 									<li>
 										<a href="vacate_rooms.php">Vacate Rooms</a>
+									</li>
+									<li>
+										<a href="warden_room_change.php">Room Change Request</a>
 									</li>
 								</ul>
 							</li>
