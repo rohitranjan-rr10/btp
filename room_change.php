@@ -107,10 +107,10 @@ require 'includes/config.inc.php';
                                 <input type="text" name="hostel" placeholder="Hostel" value="<?php echo $hostel_name; ?>" required="" disabled="disabled">
                             </div>
                             <div class="contact-fields-w3ls">
-                                <input type="number" name="room_no" placeholder="Room Number" value="<?php echo $roomNo; ?>" required="" disabled="disabled">
+                                <input type="number" name="old_room_no" placeholder="Room Number" required="">
                             </div>
                             <div class="contact-fields-w3ls">
-                                <input type="number" name="room_no" placeholder="New Room Number" required="">
+                                <input type="number" name="new_room_no" placeholder="New Room Number" required="">
                             </div>
                             <div class="contact-fields-w3ls" data-aos="fade-left">
                                 <input type="submit" name="submit" value="Submit">
@@ -176,28 +176,40 @@ require 'includes/config.inc.php';
 
 <?php
 if (isset($_POST['submit'])) {
-    $subject = $_POST['subject'];
-    $message = $_POST['message'];
-    $hostel_name = $_POST['hostel_name'];
-    $query7 = "SELECT * FROM Hostel WHERE Hostel_name = '$hostel_name'";
-    $result7 = mysqli_query($conn, $query7);
-    $row7 = mysqli_fetch_assoc($result7);
-    $hostel_id = $row7['Hostel_id'];
-    $query6 = "SELECT * FROM Hostel_Manager WHERE Hostel_id = '$hostel_id'";
-    $result6 = mysqli_query($conn, $query6);
-    $row6 = mysqli_fetch_assoc($result6);
-    $hos_man_user = $row6['Hostel_man_id'];
-    $roll = $_SESSION['roll'];
-    $today_date =  date("Y-m-d");
-    $time = date("h:i A", strtotime("+3 hours 30 minutes"));
+    $new_room = $_POST['new_room_no'];
+    $old_room = $_POST['old_room_no'];
 
-    $query = "INSERT INTO Message (sender_id,receiver_id,hostel_id,subject_h,message,msg_date,msg_time) VALUES ('$roll','$hos_man_user','$hostel_id','$subject','$message','$today_date','$time')";
-    $result = mysqli_query($conn, $query);
+    $queryCheckRoom = "SELECT Allocated FROM room WHERE Hostel_id = $hostel_id AND Room_No = $new_room";
+    $resultCheckRoom = mysqli_query($conn, $queryCheckRoom);
 
-    if ($result) {
-        echo "<script type='text/javascript'>alert('Message sent Successfully!')</script>";
+    if ($resultCheckRoom) {
+        $rowCheckRoom = mysqli_fetch_assoc($resultCheckRoom);
+        $allocated = $rowCheckRoom['Allocated'];
+
+        if ($allocated == 1) {
+            echo "<script type='text/javascript'>alert('Error: The requested room is already occupied. Please choose a vacant room.')</script>";
+        } else {
+            $query7 = "SELECT * FROM Hostel WHERE Hostel_name = '$hostel_name'";
+            $result7 = mysqli_query($conn, $query7);
+            $row7 = mysqli_fetch_assoc($result7);
+            $hostel_id = $row7['Hostel_id'];
+            $query6 = "SELECT * FROM Hostel_Manager WHERE Hostel_id = '$hostel_id'";
+            $result6 = mysqli_query($conn, $query6);
+            $row6 = mysqli_fetch_assoc($result6);
+            $hos_man_user = $row6['Hostel_man_id'];
+            $roll = $_SESSION['roll'];
+
+            $query = "INSERT INTO room_change (sender_id, receiver_id, hostel_id, old_room, new_room) VALUES ('$roll', '$hos_man_user', '$hostel_id', '$old_room', '$new_room')";
+            $result = mysqli_query($conn, $query);
+
+            if ($result) {
+                echo "<script type='text/javascript'>alert('Request Submitted')</script>";
+            } else {
+                echo "<script type='text/javascript'>alert('Error in submitting request')</script>";
+            }
+        }
     } else {
-        echo "<script type='text/javascript'>alert('Error in sending message!!! Please try again.')</script>";
+        echo "<script type='text/javascript'>alert('Error in checking room occupancy')</script>";
     }
 }
 ?>
