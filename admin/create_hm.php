@@ -106,8 +106,8 @@ require '../includes/config.inc.php';
 											<input type="text" name="hm_mobile" placeholder="MOBILE NO" required="required">
 											<input type="text" name="hostel_name" placeholder="HOSTEL NAME" required="required">
 											<input type="email" name="Email" placeholder="EMAIL" required="required">
-											<input type="password" name="pass" placeholder="HOSTEL MANAGER'S PASSWORD" required="required">
-											<input type="password" name="confpass" placeholder="CONFIRM HOSTEL MANAGER'S PASSWORD" required="required">
+											<input type="password" name="pass" placeholder="WARDEN'S PASSWORD" required="required">
+											<input type="password" name="confpass" placeholder="CONFIRM WARDEN'S PASSWORD" required="required">
 											<div class="send-button">
 												<input type="submit" name="hm_signup_submit">
 											</div>

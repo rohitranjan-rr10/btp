@@ -54,6 +54,9 @@ require 'includes/config.inc.php';
 								<li class="nav-item">
 									<a class="nav-link" href="message_user.php">Inbox</a>
 								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="room_change.php">Room Change</a>
+								</li>
 								<li class="dropdown nav-item">
 									<a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown"><?php echo $_SESSION['roll']; ?>
 										<b class="caret"></b>

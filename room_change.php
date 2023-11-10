@@ -1,7 +1,7 @@
 <?php
 require 'includes/config.inc.php';
-include "dbcon.php";
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,7 +23,6 @@ include "dbcon.php";
     <link rel="stylesheet" href="web_home/css_home/style.css" type="text/css" media="all" />
     <link rel="stylesheet" href="web_home/css_home/fontawesome-all.css">
     <link href="//fonts.googleapis.com/css?family=Poiret+One&amp;subset=cyrillic,latin-ext" rel="stylesheet">
-    <link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i&amp;subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese" rel="stylesheet">
 </head>
 
 <body>
@@ -43,8 +42,8 @@ include "dbcon.php";
                             <li class="nav-item">
                                 <a class="nav-link" href="services.php">Hostels</a>
                             </li>
-                            <li class="nav-item active">
-                                <a class="nav-link" href="fees.php">Fee Payment</a>
+                            <li class="nav-item">
+                                <a class="nav-link" href="message_user.php">Fee Payment</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="contact.php">Contact</a>
@@ -52,9 +51,9 @@ include "dbcon.php";
                             <li class="nav-item">
                                 <a class="nav-link" href="message_user.php">Inbox</a>
                             </li>
-                            <li class="nav-item">
-								<a class="nav-link" href="room_change.php">Room Change</a>
-							</li>
+                            <li class="nav-item active">
+                                <a class="nav-link" href="message_user.php">Room Change</a>
+                            </li>
                             <li class="dropdown nav-item">
                                 <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown"><?php echo $_SESSION['roll']; ?>
                                     <b class="caret"></b>
@@ -74,60 +73,53 @@ include "dbcon.php";
             </div>
         </header>
     </div>
-    <section class="services py-5">
-        <div class="container py-lg-5 py-3">
-            <h2 class="heading text-capitalize mb-sm-5 mb-4">Fees Payment</h2>
-        </div>
+    <?php
+    $hostel_id = $_SESSION['hostel_id'];
+    $query1 = "SELECT * FROM Hostel WHERE Hostel_id = '$hostel_id'";
+    $result1 = mysqli_query($conn, $query1);
+    $row1 = mysqli_fetch_assoc($result1);
+    $hostel_name = $row1['Hostel_name'];
+
+    $roomId = $_SESSION['room_id'];
+    if ($hostel_id == NULL || $roomId == NULL) {
+        $roomNo = 'NA';
+    } else {
+        $sql = "SELECT * FROM Room WHERE Room_id = '$roomId'";
+        $result = mysqli_query($conn, $sql);
+        if ($row = mysqli_fetch_assoc($result)) {
+            $roomNo = $row['Room_No'];
+        } else {
+            echo "<script type='text/javascript'>alert('Foreign Key Error-roomNo!!')</script>";
+        }
+    }
+    ?>
+    <section class="contact py-5">
         <div class="container">
-            <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th>Description</th>
-                        <th>Price</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                    $sql = "SELECT * FROM `products`";
-                    $res = mysqli_query($con, $sql) or die("MySql Query Error" . mysqli_error($con));
-                    while ($row = mysqli_fetch_assoc($res)) {
-                        $productName = $row['name'];
-                        $productPrice = $row['price'];
-                        $productId = $row['id'];
-
-                        // Check if the corresponding fee is paid for the current student
-                        $feeType = strtolower(str_replace(' ', '_', $productName));
-                        $studentRoll = $_SESSION['roll'];
-
-                        $checkPaymentQuery = "SELECT $feeType FROM student WHERE student_id = '$studentRoll'";
-                        $checkPaymentResult = mysqli_query($con, $checkPaymentQuery) or die("MySql Query Error" . mysqli_error($con));
-                        $paymentRow = mysqli_fetch_assoc($checkPaymentResult);
-                        $feePaid = $paymentRow[$feeType];
-
-                        // Disable the button if the fee is paid
-                        $buttonDisabled = $feePaid == 1 ? 'disabled' : '';
-                        $buttonText = $feePaid == 1 ? 'Payment Done' : 'Pay Now';
-                        $buttonColor = $feePaid == 1 ? 'btn-success' : 'btn-primary';
-
-                    ?>
-                        <tr>
-                            <td><?php echo $productName; ?></td>
-                            <td>₹<?php echo $productPrice; ?></td>
-                            <td>
-                                <form method="post" action="stripe_form.php">
-                                    <input type="hidden" name="id" value="<?php echo $productId; ?>" />
-                                    <button type="submit" class="btn btn-sm <?php echo $buttonColor; ?>" name="submit" <?php echo $buttonDisabled; ?>>
-                                        <?php echo $buttonText; ?>
-                                    </button>
-                                </form>
-                            </td>
-                        </tr>
-                    <?php } ?>
-                </tbody>
-            </table>
+            <h2 class="heading text-capitalize mb-sm-5 mb-4">Room Change</h2>
+            <div class="mail_grid_w3l">
+                <form action="room_change.php" method="post">
+                    <div class="row">
+                        <div class="col-md-6 contact_left_grid" data-aos="fade-right">
+                            <div class="contact-fields-w3ls">
+                                <input type="text" name="roll_no" placeholder="Roll Number" value="<?php echo $_SESSION['roll'] ?>" required="" disabled="disabled">
+                            </div>
+                            <div class="contact-fields-w3ls">
+                                <input type="text" name="hostel" placeholder="Hostel" value="<?php echo $hostel_name; ?>" required="" disabled="disabled">
+                            </div>
+                            <div class="contact-fields-w3ls">
+                                <input type="number" name="room_no" placeholder="Room Number" value="<?php echo $roomNo; ?>" required="" disabled="disabled">
+                            </div>
+                            <div class="contact-fields-w3ls">
+                                <input type="number" name="room_no" placeholder="New Room Number" required="">
+                            </div>
+                            <div class="contact-fields-w3ls" data-aos="fade-left">
+                                <input type="submit" name="submit" value="Submit">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
         </div>
-
     </section>
     <footer class="py-5">
         <div class="container py-md-5">
@@ -157,19 +149,6 @@ include "dbcon.php";
     </footer>
     <script type="text/javascript" src="web_home/js/jquery-2.2.3.min.js"></script>
     <script type="text/javascript" src="web_home/js/bootstrap.js"></script>
-    <script src="web_home/js/snap.svg-min.js"></script>
-    <script src="web_home/js/main.js"></script>
-    <script defer src="web_home/js/jquery.flexslider.js"></script>
-    <script type="text/javascript">
-        $(window).load(function() {
-            $('.flexslider').flexslider({
-                animation: "slide",
-                start: function(slider) {
-                    $('body').removeClass('loading');
-                }
-            });
-        });
-    </script>
     <script src="web_home/js/SmoothScroll.min.js"></script>
     <script type="text/javascript" src="web_home/js/move-top.js"></script>
     <script type="text/javascript" src="web_home/js/easing.js"></script>
@@ -194,3 +173,31 @@ include "dbcon.php";
 </body>
 
 </html>
+
+<?php
+if (isset($_POST['submit'])) {
+    $subject = $_POST['subject'];
+    $message = $_POST['message'];
+    $hostel_name = $_POST['hostel_name'];
+    $query7 = "SELECT * FROM Hostel WHERE Hostel_name = '$hostel_name'";
+    $result7 = mysqli_query($conn, $query7);
+    $row7 = mysqli_fetch_assoc($result7);
+    $hostel_id = $row7['Hostel_id'];
+    $query6 = "SELECT * FROM Hostel_Manager WHERE Hostel_id = '$hostel_id'";
+    $result6 = mysqli_query($conn, $query6);
+    $row6 = mysqli_fetch_assoc($result6);
+    $hos_man_user = $row6['Hostel_man_id'];
+    $roll = $_SESSION['roll'];
+    $today_date =  date("Y-m-d");
+    $time = date("h:i A", strtotime("+3 hours 30 minutes"));
+
+    $query = "INSERT INTO Message (sender_id,receiver_id,hostel_id,subject_h,message,msg_date,msg_time) VALUES ('$roll','$hos_man_user','$hostel_id','$subject','$message','$today_date','$time')";
+    $result = mysqli_query($conn, $query);
+
+    if ($result) {
+        echo "<script type='text/javascript'>alert('Message sent Successfully!')</script>";
+    } else {
+        echo "<script type='text/javascript'>alert('Error in sending message!!! Please try again.')</script>";
+    }
+}
+?>
