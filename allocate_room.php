@@ -40,29 +40,32 @@ require 'includes/config.inc.php';
 							<li class="nav-item">
 								<a class="nav-link" href="home_manager.php">Home<span class="sr-only">(current)</span></a>
 							</li>
-							<li class="nav-item">
+							<li class="nav-item active">
 								<a class="nav-link" href="allocate_room.php">Allocate Room</a>
 							<li class="dropdown nav-item">
-								<a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">Rooms
-									<b class="caret"></b>
-								</a>
-								<ul class="dropdown-menu agile_short_dropdown">
-									<li>
-										<a href="allocated_rooms.php">Allocated Rooms</a>
-									</li>
-									<li>
-										<a href="message_hostel_manager.php">Inbox</a>
-									</li>
-									<li>
-										<a href="empty_rooms.php">Empty Rooms</a>
-									</li>
-									<li>
-										<a href="vacate_rooms.php">Vacate Rooms</a>
-									</li>
-									<li>
-										<a href="warden_room_change.php">Room Change Request</a>
-									</li>
-								</ul>
+							<li class="nav-item">
+								<a class="nav-link" href="message_hostel_manager.php">Inbox</a>
+							</li>
+							<a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">Rooms
+								<b class="caret"></b>
+							</a>
+							<ul class="dropdown-menu agile_short_dropdown">
+								<li>
+									<a href="allocated_rooms.php">Allocated Rooms</a>
+								</li>
+								<li>
+									<a href="message_hostel_manager.php">Inbox</a>
+								</li>
+								<li>
+									<a href="empty_rooms.php">Empty Rooms</a>
+								</li>
+								<li>
+									<a href="vacate_rooms.php">Vacate Rooms</a>
+								</li>
+								<li>
+									<a href="warden_room_change.php">Room Change Request</a>
+								</li>
+							</ul>
 							</li>
 							<li class="nav-item">
 								<a class="nav-link" href="contact_manager.php">Contact</a>
@@ -127,7 +130,7 @@ require 'includes/config.inc.php';
 				<tbody>
 					<?php
 					if (mysqli_num_rows($result_search) == 0) {
-						echo '<tr><td colspan="4">No Rows Returned</td></tr>';
+						echo '<tr><td colspan="4">No details found</td></tr>';
 					} else {
 						while ($row_search = mysqli_fetch_assoc($result_search)) {
 							$student_id = $row_search['Student_id'];
@@ -171,7 +174,7 @@ require 'includes/config.inc.php';
 			<tbody>
 				<?php
 				if (mysqli_num_rows($result1) == 0) {
-					echo '<tr><td colspan="4">No Rows Returned</td></tr>';
+					echo '<tr><td colspan="4">No details found</td></tr>';
 				} else {
 					while ($row1 = mysqli_fetch_assoc($result1)) {
 						$student_id = $row1['Student_id'];

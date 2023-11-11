@@ -126,7 +126,7 @@ require 'includes/config.inc.php';
 				<tbody>
 					<?php
 					if (mysqli_num_rows($result_search) == 0) {
-						echo '<tr><td colspan="4">No Rows Returned</td></tr>';
+						echo '<tr><td colspan="4">No details found</td></tr>';
 					} else {
 						while ($row_search = mysqli_fetch_assoc($result_search)) {
 
@@ -163,7 +163,7 @@ require 'includes/config.inc.php';
 			<tbody>
 				<?php
 				if (mysqli_num_rows($result1) == 0) {
-					echo '<tr><td colspan="4">No Rows Returned</td></tr>';
+					echo '<tr><td colspan="4">No details found</td></tr>';
 				} else {
 					while ($row1 = mysqli_fetch_assoc($result1)) {
 						echo "<tr><td>{$hostel_name}</td><td>{$row1['Room_No']}</td></tr>\n";

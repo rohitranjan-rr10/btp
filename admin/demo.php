@@ -107,7 +107,7 @@ require '../includes/config.inc.php';
                 <p>Home</p>
             </a>
             <a href="create_hm.php">
-                <p style="font-weight: bold; color: #22c55e;">Manage Warden</p>
+                <p>Manage Warden</p>
             </a>
             <a href="students.php">
                 <p>Students</p>
@@ -120,6 +120,9 @@ require '../includes/config.inc.php';
             </a>
         </div>
     </div>
+
+
+
 
     <div class="container">
         <div class="form-container">
