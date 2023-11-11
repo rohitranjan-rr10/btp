@@ -207,7 +207,7 @@ require 'includes/config.inc.php';
 										}
 										?>
 										<h3><?php echo $hmfname . " " . $hmlname; ?></h3>
-										<h5>Admin</h5>
+										<h5>Warden</h5>
 										<ul class="address">
 											<li>
 												<ul class="address-text">

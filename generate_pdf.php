@@ -6,9 +6,10 @@ class PDF extends FPDF
     function Header()
     {
         // Set font and size for the header
-        $this->SetFont('Arial', 'B', 14);
+        $this->SetFont('Arial', 'B', 16);
+        $this->SetTextColor(31, 73, 125); // Dark blue text color
         // Title
-        $this->Cell(0, 10, 'Fees Payment Status Report', 0, 1, 'C');
+        $this->Cell(0, 15, 'Fees Payment Status Report', 0, 1, 'C');
 
         // Add a line break
         $this->Ln(10);
@@ -46,10 +47,11 @@ $query = "SELECT Student_id, CONCAT(Fname, ' ', Lname) AS Name, acad_fees, hoste
 $result = $conn->query($query);
 
 // Set font and size for the table headers
-$pdf->SetFont('Arial', 'B', 12);
+$pdf->SetFont('Arial', 'B', 14);
 
-// Add table headers with background color
-$pdf->SetFillColor(173, 216, 230); // Light blue background
+// Set background color for table header
+$pdf->SetFillColor(31, 73, 125); // Dark blue background
+$pdf->SetTextColor(255, 255, 255); // White text color
 $pdf->Cell(40, 10, 'Roll No', 1, 0, 'C', 1);
 $pdf->Cell(60, 10, 'Name', 1, 0, 'C', 1);
 $pdf->Cell(30, 10, 'Acad Fees', 1, 0, 'C', 1);
@@ -64,8 +66,9 @@ $isEvenRow = false;
 
 while ($row = $result->fetch_assoc()) {
     // Alternate row colors
-    $fillColor = $isEvenRow ? 255 : 240;
+    $fillColor = $isEvenRow ? 230 : 255; // Light gray for even rows
     $pdf->SetFillColor($fillColor);
+    $pdf->SetTextColor(0, 0, 0); // Black text color
 
     // Table data
     $pdf->Cell(40, 10, $row['Student_id'], 1, 0, 'C', 1);
@@ -80,3 +83,4 @@ while ($row = $result->fetch_assoc()) {
 $conn->close();
 
 $pdf->Output();
+?>
