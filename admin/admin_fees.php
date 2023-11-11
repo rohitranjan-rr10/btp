@@ -41,13 +41,6 @@ require '../includes/config.inc.php';
 			background-color: #f2f2f2;
 		}
 
-		.paid {
-			color: #22c55e;
-		}
-
-		.not-paid {
-			color: #ef4444;
-		}
 
 		button {
 			background-color: #007BFF;
@@ -66,6 +59,11 @@ require '../includes/config.inc.php';
 
 		.generate-button {
 			margin-bottom: 30px;
+		}
+
+		.not-paid {
+			font-weight: bold;
+			color: red;
 		}
 	</style>
 	<script>
@@ -109,10 +107,6 @@ require '../includes/config.inc.php';
 					<div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
 						<ul class="navbar-nav ml-auto">
 							<li class="nav-item">
-								<a class="nav-link" href="admin_home.php">Home<span class="sr-only">(current)</span></a>
-							</li>
-
-							<li class="nav-item">
 								<a class="nav-link" href="create_hm.php">Manage Warden</a>
 							</li>
 							<li class="nav-item">
@@ -143,17 +137,18 @@ require '../includes/config.inc.php';
 	<section class="contact py-5">
 		<div class="container">
 			<h2 class="heading text-capitalize mb-sm-5 mb-4">Fees status</h2>
-			<button onclick="generatePDF()" class="generate-button">Generate PDF Report</button>
+			<button onclick="generatePDF()" class="generate-button float-right">Download PDF Report</button>
 			<table class="table table-hover">
 				<thead>
 					<tr>
-						<th>Roll No</th>
-						<th>Name</th>
-						<th>Academic Fees</th>
-						<th>Hostel Fees</th>
-						<th>Mess Fees</th>
+						<th style="background-color: #000; color: #fff;">Roll No</th>
+						<th style="background-color: #000; color: #fff;">Name</th>
+						<th style="background-color: #000; color: #fff;">Academic Fees</th>
+						<th style="background-color: #000; color: #fff;">Hostel Fees</th>
+						<th style="background-color: #000; color: #fff;">Mess Fees</th>
 					</tr>
 				</thead>
+
 				<tbody>
 					<?php
 					$query = "SELECT Student_id, CONCAT(Fname, ' ', Lname) AS Name, acad_fees, hostel_fees, mess_fees FROM Student";
@@ -163,9 +158,9 @@ require '../includes/config.inc.php';
 						while ($row = mysqli_fetch_assoc($result)) {
 							$studentID = $row['Student_id'];
 							$name = $row['Name'];
-							$acadFees = $row['acad_fees'] == 1 ? '<span class="status-button paid"><b>Paid</b></span>' : '<span class="status-button not-paid"><b>Not Paid</b></span>';
-							$hostelFees = $row['hostel_fees'] == 1 ? '<span class="status-button paid"><b>Paid</b></span>' : '<span class="status-button not-paid"><b>Not Paid</b></span>';
-							$messFees = $row['mess_fees'] == 1 ? '<span class="status-button paid"><b>Paid</b></span>' : '<span class="status-button not-paid"><b>Not Paid</b></span>';
+							$acadFees = $row['acad_fees'] == 1 ? '<span class="status-button">Paid</span>' : '<span class="status-button not-paid">Not Paid</span>';
+							$hostelFees = $row['hostel_fees'] == 1 ? '<span class="status-button">Paid</span>' : '<span class="status-button not-paid">Not Paid</span>';
+							$messFees = $row['mess_fees'] == 1 ? '<span class="status-button">Paid</span>' : '<span class="status-button not-paid">Not Paid</span>';
 
 							echo "<tr>
                                 <td>$studentID</td>
@@ -191,9 +186,6 @@ require '../includes/config.inc.php';
 			<div class="footer-grid">
 				<div class="list-footer">
 					<ul class="footer-nav text-center">
-						<li>
-							<a href="admin_home.php">Home</a>
-						</li>
 						<li>
 							<a href="create_hm.php">Manage Warden</a>
 						</li>

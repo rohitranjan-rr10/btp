@@ -38,10 +38,10 @@ require 'includes/config.inc.php';
                     <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
                         <ul class="navbar-nav ml-auto">
                             <li class="nav-item">
-                                <a class="nav-link" href="home_manager.php">Home<span class="sr-only">(current)</span></a>
-                            </li>
-                            <li class="nav-item">
                                 <a class="nav-link" href="allocate_room.php">Allocate Room</a>
+                            <li class="nav-item">
+                                <a class="nav-link" href="message_hostel_manager.php">Inbox</a>
+                            </li>
                             <li class="dropdown nav-item">
                                 <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">Rooms
                                     <b class="caret"></b>
@@ -201,7 +201,7 @@ require 'includes/config.inc.php';
             SET Room_No = $latest
             WHERE Student_id = '$student_id'";
 
-            if (mysqli_query($conn, $query33) && mysqli_query($conn, $query22) && mysqli_query($conn, $query38)&& mysqli_query($conn, $query98) && mysqli_query($conn, $query78)) {
+            if (mysqli_query($conn, $query33) && mysqli_query($conn, $query22) && mysqli_query($conn, $query38) && mysqli_query($conn, $query98) && mysqli_query($conn, $query78)) {
                 echo "<script type='text/javascript'>alert('Request Accepted')</script>";
             } else {
                 echo "Error updating allocation status: " . mysqli_error($conn);
@@ -222,9 +222,6 @@ require 'includes/config.inc.php';
             <div class="footer-grid">
                 <div class="list-footer">
                     <ul class="footer-nav text-center">
-                        <li>
-                            <a href="home_manager.php">Home</a>
-                        </li>
                         <li>
                             <a href="allocate_room.php">Allocate</a>
                         </li>

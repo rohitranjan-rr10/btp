@@ -36,9 +36,9 @@ if (isset($_POST['login-submit'])) {
         }
 
         if ($_SESSION['isadmin'] == 0) {
-          header("Location: ../home_manager.php?login=success");
+          header("Location: ../allocate_room.php?login=success");
         } else {
-          header("Location: ../admin/admin_home.php?login=success");
+          header("Location: ../admin/create_hm.php?login=success");
         }
       } else {
         header("Location: ../login-hostel_manager.php?error=strangeerr");

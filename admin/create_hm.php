@@ -112,9 +112,6 @@ require '../includes/config.inc.php';
             <h1><a href="admin_home.php">IIT PATNA</a></h1>
         </div>
         <div class="navbar-right">
-            <a href="admin_home.php">
-                <p>Home</p>
-            </a>
             <a href="create_hm.php">
                 <p style="font-weight: bold; color: #22c55e;">Manage Warden</p>
             </a>

@@ -56,9 +56,6 @@ require 'includes/config.inc.php';
 						<div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
 							<ul class="navbar-nav ml-auto">
 								<li class="nav-item">
-									<a class="nav-link" href="home.php">Home<span class="sr-only">(current)</span></a>
-								</li>
-								<li class="nav-item">
 									<a class="nav-link" href="services.php">Hostels</a>
 								</li>
 								<li class="nav-item">

@@ -37,9 +37,6 @@ require 'includes/config.inc.php';
 					</button>
 					<div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
 						<ul class="navbar-nav ml-auto">
-							<li class="nav-item">
-								<a class="nav-link" href="home_manager.php">Home<span class="sr-only">(current)</span></a>
-							</li>
 							<li class="nav-item active">
 								<a class="nav-link" href="allocate_room.php">Allocate Room</a>
 							<li class="dropdown nav-item">
@@ -257,9 +254,6 @@ require 'includes/config.inc.php';
 			<div class="footer-grid">
 				<div class="list-footer">
 					<ul class="footer-nav text-center">
-						<li>
-							<a href="home_manager.php">Home</a>
-						</li>
 						<li>
 							<a href="allocate_room.php">Allocate</a>
 						</li>

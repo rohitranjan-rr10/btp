@@ -59,10 +59,6 @@ require '../includes/config.inc.php';
 						<div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
 							<ul class="navbar-nav ml-auto">
 								<li class="nav-item">
-									<a class="nav-link" href="../home_manager.php">Home<span class="sr-only">(current)</span></a>
-								</li>
-
-								<li class="nav-item">
 									<a class="nav-link" href="../allocate_room.php">Allocate Rooms</a>
 								</li>
 								<li class="dropdown nav-item">
