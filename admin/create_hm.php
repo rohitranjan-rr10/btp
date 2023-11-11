@@ -53,6 +53,9 @@ require '../includes/config.inc.php';
 
         .container {
             padding: 20px;
+			display: flex; /* Display the container as a flex container */
+            justify-content: center; /* Center the form containers horizontally */
+            align-items: flex-start;
         }
 
         .form-container {
@@ -60,8 +63,10 @@ require '../includes/config.inc.php';
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-            margin: 20px auto;
-            max-width: 400px;
+            margin: 0 10px; /* Add some margin between the forms */
+            max-width: 300px; /* Adjust the maximum width to fit both forms */
+            display: inline-block; /* Display the form containers inline */
+            vertical-align: top;
         }
 
         .form-container h2 {
@@ -93,6 +98,10 @@ require '../includes/config.inc.php';
 
         .form-container input[type="submit"]:hover {
             background-color: #2980b9;
+        }
+
+		p {
+            font-size: 20px; /* Set the desired font size for all <p> tags */
         }
     </style>
 </head>
