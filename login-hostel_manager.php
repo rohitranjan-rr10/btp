@@ -25,13 +25,31 @@
             <div class="w3l-form-group">
                 <label>Password:</label>
                 <div class="group">
-                    <input type="password" class="form-control" name="pwd" placeholder="Enter your password" required="required" />
+                    <input type="password" class="form-control" name="pwd" id="password" placeholder="Enter your password" required="required" />
+                    <span class="fa fa-fw fa-eye field-icon toggle-password" onclick="togglePasswordVisibility()"></span>
                 </div>
             </div>
             <button type="submit" name="login-submit">Login</button>
         </form>
         <p class="w3l-register-p">Login as<a href="index.php" class="register"> Student</a></p>
     </div>
+
+    <!-- Include jQuery library (ensure you have a working internet connection) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        function togglePasswordVisibility() {
+            var passwordInput = $('#password');
+            var passwordIcon = $('.toggle-password');
+
+            if (passwordInput.attr('type') === 'password') {
+                passwordInput.attr('type', 'text');
+                passwordIcon.removeClass('fa-eye').addClass('fa-eye-slash');
+            } else {
+                passwordInput.attr('type', 'password');
+                passwordIcon.removeClass('fa-eye-slash').addClass('fa-eye');
+            }
+        }
+    </script>
 </body>
 
 </html>
