@@ -107,7 +107,7 @@ require 'includes/config.inc.php';
                                 <input type="text" name="hostel" placeholder="Hostel" value="<?php echo $hostel_name; ?>" required="" disabled="disabled">
                             </div>
                             <div class="contact-fields-w3ls">
-                                <input type="number" name="old_room_no" placeholder="Room Number" required="">
+                                <input type="number" name="old_room_no" placeholder="Current Room Number" required="">
                             </div>
                             <div class="contact-fields-w3ls">
                                 <input type="number" name="new_room_no" placeholder="New Room Number" required="">
