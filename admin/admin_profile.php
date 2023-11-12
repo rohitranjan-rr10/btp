@@ -50,8 +50,8 @@ require '../includes/config.inc.php';
 				<div class="container agile-banner_nav">
 					<nav class="navbar navbar-expand-lg navbar-light bg-light">
 						<h1><a class="navbar-brand" href="create_hm.php">IIT PATNA<span class="display"> </span></a></h1>
-						<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-							<span class="navbar-toggler-icon"></span>
+						<button style="border-color: transparent; background: transparent;" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+							<a href="../includes/logout.inc.php" class="nav-link" style="font-weight: 500; color: #FFFFFF;">Logout</a>
 						</button>
 						<div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
 							<ul class="navbar-nav ml-auto">
