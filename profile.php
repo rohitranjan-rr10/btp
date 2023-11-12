@@ -49,9 +49,9 @@ require 'includes/config.inc.php';
 			<header>
 				<div class="container agile-banner_nav">
 					<nav class="navbar navbar-expand-lg navbar-light bg-light">
-						<h1><a class="navbar-brand" href="home.php">IIT PATNA<span class="display"></span></a></h1>
-						<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-							<span class="navbar-toggler-icon"></span>
+						<h1><a class="navbar-brand" href="services.php">IIT PATNA<span class="display"></span></a></h1>
+						<button style="border-color: transparent; background: transparent;" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+							<a href="includes/logout.inc.php" class="nav-link" style="font-weight: 500; color: #FFFFFF;">Logout</a>
 						</button>
 						<div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
 							<ul class="navbar-nav ml-auto">
@@ -132,7 +132,7 @@ require 'includes/config.inc.php';
 							<fieldset class="step agileinfo w3ls_fancy_step">
 								<legend>Hostel Info</legend>
 								<div class="abt-agile">
-									<div class="abt-agile-left-hostel">
+									<div class="abt-agile-left">
 									</div>
 									<div class="abt-agile-right">
 										<h3><?php echo $_SESSION['fname'] . " " . $_SESSION['lname']; ?></h3>

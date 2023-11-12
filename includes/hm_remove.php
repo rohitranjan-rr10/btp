@@ -67,7 +67,7 @@ if (isset($_POST['hm_remove_submit'])) {
         } else {
           echo "<script type='text/javascript'>alert('Not SET')</script>";
         }
-        header("Location: ../home.php?login=success");
+        header("Location: ../create_hm.php?login=success");
       } else {
         header("Location: ../index.php?error=strangeerr");
         exit();

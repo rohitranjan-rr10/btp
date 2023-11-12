@@ -109,7 +109,7 @@ require '../includes/config.inc.php';
 <body>
     <div class="navbar">
         <div class="navbar-left">
-            <h1><a href="admin_home.php">IIT PATNA</a></h1>
+            <h1><a href="create_hm.php">IIT PATNA</a></h1>
         </div>
         <div class="navbar-right">
             <a href="create_hm.php">
