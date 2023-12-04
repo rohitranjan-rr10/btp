@@ -9,7 +9,7 @@ if (isset($_POST['login-submit'])) {
     header("Location: ../index.php?error=emptyfields");
     exit();
   } else {
-    $sql = "SELECT *FROM Student WHERE Student_id = '$roll'";
+    $sql = "SELECT *FROM student WHERE Student_id = '$roll'";
     $result = mysqli_query($conn, $sql);
 
     if ($row = mysqli_fetch_assoc($result)) {

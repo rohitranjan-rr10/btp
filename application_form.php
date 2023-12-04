@@ -160,17 +160,17 @@ if (isset($_POST['submit'])) {
 	$password = $_POST['pwd'];
 	$hostel = $_GET['id'];
 	$message = $_POST['Message'];
-	$query_imp = "SELECT * FROM Student WHERE Student_id = '$roll'";
+	$query_imp = "SELECT * FROM student WHERE Student_id = '$roll'";
 	$result_imp = mysqli_query($conn, $query_imp);
 	$row_imp = mysqli_fetch_assoc($result_imp);
 	$room_id = $row_imp['Room_id'];
 
 	if (is_null($room_id)) {
-		$query_imp2 = "SELECT * FROM Application WHERE Student_id = '$roll'";
+		$query_imp2 = "SELECT * FROM application WHERE Student_id = '$roll'";
 		$result_imp2 = mysqli_query($conn, $query_imp2);
 
 		if (mysqli_num_rows($result_imp2) == 0) {
-			$query = "SELECT * FROM Student WHERE Student_id = '$roll'";
+			$query = "SELECT * FROM student WHERE Student_id = '$roll'";
 			$result = mysqli_query($conn, $query);
 
 			if ($row = mysqli_fetch_assoc($result)) {
@@ -179,11 +179,11 @@ if (isset($_POST['submit'])) {
 				if ($pwdCheck == false) {
 					echo "<script type='text/javascript'>alert('Incorrect Password!!')</script>";
 				} else if ($pwdCheck == true) {
-					$query2 = "SELECT * FROM Hostel WHERE Hostel_name = '$hostel'";
+					$query2 = "SELECT * FROM hostel WHERE Hostel_name = '$hostel'";
 					$result2 = mysqli_query($conn, $query2);
 					$row2 = mysqli_fetch_assoc($result2);
 					$hostel_id = $row2['Hostel_id'];
-					$query3 = "INSERT INTO Application (Student_id,Hostel_id,Application_status,Message) VALUES ('$roll','$hostel_id',true,'$message')";
+					$query3 = "INSERT INTO application (Student_id,Hostel_id,Application_status,Message) VALUES ('$roll','$hostel_id',true,'$message')";
 					$result3 = mysqli_query($conn, $query3);
 
 					if ($result3) {

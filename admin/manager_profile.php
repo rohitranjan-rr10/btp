@@ -137,7 +137,7 @@ require '../includes/config.inc.php';
 													<li><b>Warden:</b></li>
 													<?php
 													$HOID = $_SESSION['hostel_id'];
-													$query999 = "SELECT * FROM Hostel WHERE Hostel_id = '$HOID'";
+													$query999 = "SELECT * FROM hostel WHERE Hostel_id = '$HOID'";
 													$result999 = mysqli_query($conn, $query999);
 													$row999 = mysqli_fetch_assoc($result999);
 													$HNM = $row999['Hostel_name'];

@@ -93,7 +93,7 @@ require 'includes/config.inc.php';
 
 	<?php
 	$hostel_id = $_SESSION['hostel_id'];
-	$query6 = "SELECT * FROM Hostel WHERE Hostel_id = '$hostel_id'";
+	$query6 = "SELECT * FROM hostel WHERE Hostel_id = '$hostel_id'";
 	$result6 = mysqli_query($conn, $query6);
 	$row6 = mysqli_fetch_assoc($result6);
 	$hostel_name = $row6['Hostel_name'];
@@ -189,7 +189,7 @@ if (isset($_POST['submit'])) {
 	$man_id = $_SESSION['hostel_man_id'];
 	$today_date =  date("Y-m-d");
 	$time = date("h:i A");
-	$query = "INSERT INTO Message (sender_id,receiver_id,hostel_id,subject_h,message,msg_date,msg_time) VALUES ('$man_id','$roll','$hostel_id','$subject','$message','$today_date','$time')";
+	$query = "INSERT INTO message (sender_id,receiver_id,hostel_id,subject_h,message,msg_date,msg_time) VALUES ('$man_id','$roll','$hostel_id','$subject','$message','$today_date','$time')";
 	$result = mysqli_query($conn, $query);
 
 	if ($result) {

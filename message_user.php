@@ -89,12 +89,12 @@ require 'includes/config.inc.php';
 	<br>
 	<?php
 	$roll_no = $_SESSION['roll'];
-	$query = "SELECT * FROM Message WHERE receiver_id ='$roll_no'";
+	$query = "SELECT * FROM message WHERE receiver_id ='$roll_no'";
 	$result = mysqli_query($conn, $query);
 
 	while ($row = mysqli_fetch_assoc($result)) {
 		$hostel_id = $row['hostel_id'];
-		$query6 = "SELECT * FROM Hostel WHERE Hostel_id = '$hostel_id'";
+		$query6 = "SELECT * FROM hostel WHERE Hostel_id = '$hostel_id'";
 		$result6 = mysqli_query($conn, $query6);
 		$row6 = mysqli_fetch_assoc($result6);
 		$hostel_name = $row6['Hostel_name'];

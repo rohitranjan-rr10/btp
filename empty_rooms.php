@@ -105,9 +105,9 @@ require 'includes/config.inc.php';
 	if (isset($_POST['search'])) {
 		$search_box = $_POST['search_box'];
 		$hostel_id = $_SESSION['hostel_id'];
-		$query_search = "SELECT * FROM Room WHERE Room_No like '$search_box%' and Hostel_id = '$hostel_id' and Allocated = '0'";
+		$query_search = "SELECT * FROM room WHERE Room_No like '$search_box%' and Hostel_id = '$hostel_id' and Allocated = '0'";
 		$result_search = mysqli_query($conn, $query_search);
-		$query6 = "SELECT * FROM Hostel WHERE Hostel_id = '$hostel_id'";
+		$query6 = "SELECT * FROM hostel WHERE Hostel_id = '$hostel_id'";
 		$result6 = mysqli_query($conn, $query6);
 		$row6 = mysqli_fetch_assoc($result6);
 		$hostel_name = $row6['Hostel_name'];
@@ -142,9 +142,9 @@ require 'includes/config.inc.php';
 		<h2 class="heading text-capitalize mb-sm-5 mb-4"> Empty Rooms </h2>
 		<?php
 		$hostel_id = $_SESSION['hostel_id'];
-		$query1 = "SELECT * FROM Room where Hostel_id = '$hostel_id' and Allocated = '0'";
+		$query1 = "SELECT * FROM room where Hostel_id = '$hostel_id' and Allocated = '0'";
 		$result1 = mysqli_query($conn, $query1);
-		$query6 = "SELECT * FROM Hostel WHERE Hostel_id = '$hostel_id'";
+		$query6 = "SELECT * FROM hostel WHERE Hostel_id = '$hostel_id'";
 		$result6 = mysqli_query($conn, $query6);
 		$row6 = mysqli_fetch_assoc($result6);
 		$hostel_name = $row6['Hostel_name'];

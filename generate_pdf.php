@@ -43,7 +43,7 @@ if ($conn->connect_error) {
     die('Connection failed: ' . $conn->connect_error);
 }
 
-$query = "SELECT Student_id, CONCAT(Fname, ' ', Lname) AS Name, acad_fees, hostel_fees, mess_fees FROM Student";
+$query = "SELECT Student_id, CONCAT(Fname, ' ', Lname) AS Name, acad_fees, hostel_fees, mess_fees FROM student";
 $result = $conn->query($query);
 
 // Set font and size for the table headers

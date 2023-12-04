@@ -105,9 +105,9 @@ require 'includes/config.inc.php';
 	if (isset($_POST['search'])) {
 		$search_box = $_POST['search_box'];
 		$hostel_id = $_SESSION['hostel_id'];
-		$query_search = "SELECT * FROM Student WHERE Student_id like '$search_box%' and Hostel_id = '$hostel_id'";
+		$query_search = "SELECT * FROM student WHERE Student_id like '$search_box%' and Hostel_id = '$hostel_id'";
 		$result_search = mysqli_query($conn, $query_search);
-		$query6 = "SELECT * FROM Hostel WHERE Hostel_id = '$hostel_id'";
+		$query6 = "SELECT * FROM hostel WHERE Hostel_id = '$hostel_id'";
 		$result6 = mysqli_query($conn, $query6);
 		$row6 = mysqli_fetch_assoc($result6);
 		$hostel_name = $row6['Hostel_name'];
@@ -130,7 +130,7 @@ require 'includes/config.inc.php';
 					} else {
 						while ($row_search = mysqli_fetch_assoc($result_search)) {
 							$room_id = $row_search['Room_id'];
-							$query7 = "SELECT * FROM Room WHERE Room_id = '$room_id'";
+							$query7 = "SELECT * FROM room WHERE Room_id = '$room_id'";
 							$result7 = mysqli_query($conn, $query7);
 							$row7 = mysqli_fetch_assoc($result7);
 							$room_no = $row7['Room_No'];
@@ -151,9 +151,9 @@ require 'includes/config.inc.php';
 		<h2 class="heading text-capitalize mb-sm-5 mb-4">Rooms Allotted</h2>
 		<?php
 		$hostel_id = $_SESSION['hostel_id'];
-		$query1 = "SELECT * FROM Student where Hostel_id = '$hostel_id' ORDER BY Room_id";
+		$query1 = "SELECT * FROM student where Hostel_id = '$hostel_id' ORDER BY Room_id";
 		$result1 = mysqli_query($conn, $query1);
-		$query6 = "SELECT * FROM Hostel WHERE Hostel_id = '$hostel_id'";
+		$query6 = "SELECT * FROM hostel WHERE Hostel_id = '$hostel_id'";
 		$result6 = mysqli_query($conn, $query6);
 		$row6 = mysqli_fetch_assoc($result6);
 		$hostel_name = $row6['Hostel_name'];
@@ -176,7 +176,7 @@ require 'includes/config.inc.php';
 				} else {
 					while ($row1 = mysqli_fetch_assoc($result1)) {
 						$room_id = $row1['Room_id'];
-						$query7 = "SELECT * FROM Room WHERE Room_id = '$room_id'";
+						$query7 = "SELECT * FROM room WHERE Room_id = '$room_id'";
 						$result7 = mysqli_query($conn, $query7);
 						$row7 = mysqli_fetch_assoc($result7);
 						$room_no = $row7['Room_No'];

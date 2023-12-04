@@ -94,7 +94,7 @@ require 'includes/config.inc.php';
         $query1 = "SELECT * FROM room_change where hostel_id = '$id_hostel' and Application_status = '0'";
         $result1 = mysqli_query($conn, $query1);
 
-        $query6 = "SELECT * FROM Hostel WHERE Hostel_id = '$id_hostel'";
+        $query6 = "SELECT * FROM hostel WHERE Hostel_id = '$id_hostel'";
         $result6 = mysqli_query($conn, $query6);
         $row6 = mysqli_fetch_assoc($result6);
         $hostel_name = $row6['Hostel_name'];
@@ -119,7 +119,7 @@ require 'includes/config.inc.php';
                 } else {
                     while ($row1 = mysqli_fetch_assoc($result1)) {
                         $student_id = $row1['sender_id'];
-                        $query7 = "SELECT * FROM Student WHERE Student_id = '$student_id'";
+                        $query7 = "SELECT * FROM student WHERE Student_id = '$student_id'";
                         $result7 = mysqli_query($conn, $query7);
                         $row7 = mysqli_fetch_assoc($result7);
                         $student_name = $row7['Fname'] . " " . $row7['Lname'];

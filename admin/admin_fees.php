@@ -151,7 +151,7 @@ require '../includes/config.inc.php';
 
 				<tbody>
 					<?php
-					$query = "SELECT Student_id, CONCAT(Fname, ' ', Lname) AS Name, acad_fees, hostel_fees, mess_fees FROM Student";
+					$query = "SELECT Student_id, CONCAT(Fname, ' ', Lname) AS Name, acad_fees, hostel_fees, mess_fees FROM student";
 					$result = mysqli_query($conn, $query);
 
 					if (mysqli_num_rows($result) > 0) {

@@ -86,7 +86,7 @@ require '../includes/config.inc.php';
 	if (isset($_POST['search'])) {
 		$search_box = $_POST['search_box'];
 		$hostel_id = $_SESSION['hostel_id'];
-		$query_search = "SELECT * FROM Student WHERE Student_id like '$search_box%'";
+		$query_search = "SELECT * FROM student WHERE Student_id like '$search_box%'";
 		$result_search = mysqli_query($conn, $query_search);
 	?>
 		<div class="container">
@@ -108,10 +108,10 @@ require '../includes/config.inc.php';
 						while ($row_search = mysqli_fetch_assoc($result_search)) {
 							$room_id = $row_search['Room_id'];
 							$studentHID = $row_search['Hostel_id'];
-							$query7 = "SELECT * FROM Room WHERE Room_id = '$room_id'";
+							$query7 = "SELECT * FROM room WHERE Room_id = '$room_id'";
 							$result7 = mysqli_query($conn, $query7);
 							$row7 = mysqli_fetch_assoc($result7);
-							$query88 = "SELECT * FROM Hostel WHERE Hostel_id = '$studentHID'";
+							$query88 = "SELECT * FROM hostel WHERE Hostel_id = '$studentHID'";
 							$result88 = mysqli_query($conn, $query88);
 							$row88 = mysqli_fetch_assoc($result88);
 							$room_no = isset($row7['Room_No']) ? $row7['Room_No'] : "NA";
@@ -133,7 +133,7 @@ require '../includes/config.inc.php';
 	<div class="container">
 		<h2 class="heading text-capitalize mb-sm-5 mb-4"> Rooms Allotted </h2>
 		<?php
-		$query1 = "SELECT * FROM Student";
+		$query1 = "SELECT * FROM student";
 		$result1 = mysqli_query($conn, $query1);
 		?>
 
@@ -159,7 +159,7 @@ require '../includes/config.inc.php';
 						$HNM = 'NA'; // Initialize HNM to 'NA'
 
 						if (!is_null($room_id)) {
-							$query7 = "SELECT * FROM Room WHERE Room_id = '$room_id'";
+							$query7 = "SELECT * FROM room WHERE Room_id = '$room_id'";
 							$result7 = mysqli_query($conn, $query7);
 							$row7 = mysqli_fetch_assoc($result7);
 
@@ -169,7 +169,7 @@ require '../includes/config.inc.php';
 						}
 
 						if (!is_null($HID)) {
-							$query99 = "SELECT * FROM Hostel WHERE Hostel_id = '$HID'";
+							$query99 = "SELECT * FROM hostel WHERE Hostel_id = '$HID'";
 							$result99 = mysqli_query($conn, $query99);
 							$row99 = mysqli_fetch_assoc($result99);
 

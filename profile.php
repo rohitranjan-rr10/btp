@@ -146,7 +146,7 @@ require 'includes/config.inc.php';
 													if ($hostelId == NULL) {
 														$hostelName = 'NA';
 													} else {
-														$sql = "SELECT * FROM Hostel WHERE Hostel_id = '$hostelId'";
+														$sql = "SELECT * FROM hostel WHERE Hostel_id = '$hostelId'";
 														$result = mysqli_query($conn, $sql);
 														if ($row = mysqli_fetch_assoc($result)) {
 															$hostelName = $row['Hostel_name'];
@@ -166,7 +166,7 @@ require 'includes/config.inc.php';
 													if ($hostelId == NULL || $roomId == NULL) {
 														$roomNo = 'NA';
 													} else {
-														$sql = "SELECT * FROM Room WHERE Room_id = '$roomId'";
+														$sql = "SELECT * FROM room WHERE Room_id = '$roomId'";
 														$result = mysqli_query($conn, $sql);
 														if ($row = mysqli_fetch_assoc($result)) {
 															$roomNo = $row['Room_No'];

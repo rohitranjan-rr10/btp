@@ -14,7 +14,7 @@ if (isset($_POST['hm_remove_submit'])) {
     $result = mysqli_query($conn, $sql);
 
     if ($row = mysqli_fetch_assoc($result)) {
-      $sql2 = "SELECT *FROM Hostel WHERE Hostel_name = '$hostel_name'";
+      $sql2 = "SELECT *FROM hostel WHERE Hostel_name = '$hostel_name'";
       $result2 = mysqli_query($conn, $sql2);
 
       if ($row2 = mysqli_fetch_assoc($result2)) {

@@ -72,7 +72,7 @@ require 'includes/config.inc.php';
     </div>
     <?php
     $hostel_id = $_SESSION['hostel_id'];
-    $query1 = "SELECT * FROM Hostel WHERE Hostel_id = '$hostel_id'";
+    $query1 = "SELECT * FROM hostel WHERE Hostel_id = '$hostel_id'";
     $result1 = mysqli_query($conn, $query1);
     $row1 = mysqli_fetch_assoc($result1);
     $hostel_name = $row1['Hostel_name'];
@@ -81,7 +81,7 @@ require 'includes/config.inc.php';
     if ($hostel_id == NULL || $roomId == NULL) {
         $roomNo = 'NA';
     } else {
-        $sql = "SELECT * FROM Room WHERE Room_id = '$roomId'";
+        $sql = "SELECT * FROM room WHERE Room_id = '$roomId'";
         $result = mysqli_query($conn, $sql);
         if ($row = mysqli_fetch_assoc($result)) {
             $roomNo = $row['Room_No'];
@@ -190,7 +190,7 @@ if (isset($_POST['submit'])) {
             if ($allocated == 1) {
                 echo "<script type='text/javascript'>alert('Error: The requested room is already occupied. Please choose a vacant room.')</script>";
             } else {
-                $query7 = "SELECT * FROM Hostel WHERE Hostel_name = '$hostel_name'";
+                $query7 = "SELECT * FROM hostel WHERE Hostel_name = '$hostel_name'";
                 $result7 = mysqli_query($conn, $query7);
                 $row7 = mysqli_fetch_assoc($result7);
                 $hostel_id = $row7['Hostel_id'];

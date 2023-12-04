@@ -105,7 +105,7 @@ require 'includes/config.inc.php';
 	<?php
 	$username = $_SESSION['username'];
 	$hostel_man_id = $_SESSION['hostel_man_id'];
-	$query = "SELECT * FROM Message WHERE receiver_id ='$hostel_man_id' ORDER BY msg_date DESC, msg_time DESC";
+	$query = "SELECT * FROM message WHERE receiver_id ='$hostel_man_id' ORDER BY msg_date DESC, msg_time DESC";
 	$result = mysqli_query($conn, $query);
 
 	while ($row = mysqli_fetch_assoc($result)) {

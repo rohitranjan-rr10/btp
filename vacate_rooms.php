@@ -88,7 +88,7 @@ require 'includes/config.inc.php';
 
 	<?php
 	$hostel_id = $_SESSION['hostel_id'];
-	$query1 = "SELECT * FROM Hostel WHERE Hostel_id = '$hostel_id'";
+	$query1 = "SELECT * FROM hostel WHERE Hostel_id = '$hostel_id'";
 	$result1 = mysqli_query($conn, $query1);
 	$row1 = mysqli_fetch_assoc($result1);
 	$hostel_name = $row1['Hostel_name'];
@@ -122,14 +122,14 @@ require 'includes/config.inc.php';
 	<?php
 	if (isset($_POST['submit'])) {
 		$hostel_id = $_SESSION['hostel_id'];
-		$query1 = "SELECT * FROM Hostel WHERE Hostel_id = '$hostel_id'";
+		$query1 = "SELECT * FROM hostel WHERE Hostel_id = '$hostel_id'";
 		$result1 = mysqli_query($conn, $query1);
 		$row1 = mysqli_fetch_assoc($result1);
 		$hostel_name = $row1['Hostel_name'];
 		$roll = $_POST['roll_no'];
 		$hostel = $hostel_name;
 		$room_number = (int)$_POST['room_no'];
-		$query2 = "SELECT * FROM Room WHERE Hostel_id = '$hostel_id' and Room_No = '$room_number'";
+		$query2 = "SELECT * FROM room WHERE Hostel_id = '$hostel_id' and Room_No = '$room_number'";
 		$result2 = mysqli_query($conn, $query2);
 
 		if (mysqli_num_rows($result2) == 0) {
@@ -145,7 +145,7 @@ require 'includes/config.inc.php';
 		}
 
 		$room_id = (int)$row2['Room_id'];
-		$query3 = "SELECT * FROM Student WHERE Student_id = '$roll' and Hostel_id = '$hostel_id' and Room_id = '$room_id'";
+		$query3 = "SELECT * FROM student WHERE Student_id = '$roll' and Hostel_id = '$hostel_id' and Room_id = '$room_id'";
 		$result3 = mysqli_query($conn, $query3);
 
 		if (mysqli_num_rows($result3) == 0) {
@@ -156,14 +156,14 @@ require 'includes/config.inc.php';
 		$row3 = mysqli_fetch_assoc($result3);
 
 		if ($result3) {
-			$query4 = "UPDATE Student SET Hostel_id = NULL, Room_id = NULL WHERE Student_id = '$roll'";
+			$query4 = "UPDATE student SET Hostel_id = NULL, Room_id = NULL WHERE Student_id = '$roll'";
 			$result4 = mysqli_query($conn, $query4);
 
 			if ($result4) {
-				$query5 = "UPDATE Room SET Allocated = '0' WHERE Room_id = '$room_id'";
+				$query5 = "UPDATE room SET Allocated = '0' WHERE Room_id = '$room_id'";
 				$result5 = mysqli_query($conn, $query5);
 				if ($result5) {
-					$query6 = "DELETE FROM Application WHERE Student_id = '$roll'";
+					$query6 = "DELETE FROM application WHERE Student_id = '$roll'";
 					$result6 = mysqli_query($conn, $query6);
 					if ($result6) {
 						echo "<script type='text/javascript'>alert('Vacated Successfully')</script>";
